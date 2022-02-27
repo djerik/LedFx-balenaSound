@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 if [[ -n "$SOUND_DISABLE_SPOTIFY" ]]; then
   echo "Spotify is disabled, exiting..."
   exit 0
 fi
 
-# --- ENV VARS ---
+# --- ENV VARS ---
 # SOUND_DEVICE_NAME: Set the device broadcast name for Spotify
 # SOUND_SPOTIFY_BITRATE: Set the playback bitrate
 SOUND_DEVICE_NAME=${SOUND_DEVICE_NAME:-"balenaSound Spotify $(echo "$BALENA_DEVICE_UUID" | cut -c -4)"}
@@ -17,8 +17,8 @@ if [[ -z "$SOUND_SPOTIFY_DISABLE_NORMALISATION" ]]; then
     --enable-volume-normalisation
 fi
 
-# SOUND_SPOTIFY_USERNAME: Login username for Spotify
-# SOUND_SPOTIFY_PASSWORD: Login password for Spotify
+# SOUND_SPOTIFY_USERNAME: Login username for Spotify
+# SOUND_SPOTIFY_PASSWORD: Login password for Spotify
 if [[ -n "$SOUND_SPOTIFY_USERNAME" ]] && [[ -n "$SOUND_SPOTIFY_PASSWORD" ]]; then
   set -- "$@" \
     --username "$SOUND_SPOTIFY_USERNAME" \
@@ -40,6 +40,7 @@ echo "Device name: $SOUND_DEVICE_NAME"
 [[ -z "$SOUND_SPOTIFY_ENABLE_CACHE" ]] && echo "Spotify audio cache disabled."
 
 set -- /usr/bin/librespot \
+  --backend pulseaudio \
   --name "$SOUND_DEVICE_NAME" \
   --bitrate "$SOUND_SPOTIFY_BITRATE" \
   --cache /var/cache/raspotify \
