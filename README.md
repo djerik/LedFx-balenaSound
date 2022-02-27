@@ -5,7 +5,7 @@
 
 Just click the button to deploy it!
 
-[![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/ShiromMakkad/LedFx-balenaSound)
+[![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/djerik/LedFx-balenaSound)
 
 You can also clone the repository and use `balena push` to deploy your code with any changes. 
 
