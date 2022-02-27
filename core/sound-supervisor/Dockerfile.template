@@ -9,6 +9,7 @@ RUN npm install
 COPY core/sound-supervisor/src ./src
 COPY core/sound-supervisor/tsconfig.json .
 RUN npm run build
+COPY VERSION .
 
 FROM node:14-alpine3.14
 
@@ -16,6 +17,7 @@ WORKDIR /usr/src
 
 COPY core/sound-supervisor/package*.json ./
 COPY --from=build /usr/src/build ./build
+COPY VERSION .
 
 RUN npm install --production
 
